@@ -12,7 +12,7 @@ This plugin utilises <i>Apache Maven</i> as it's dependency manager.
 <br> 
 To compile, simply run <code>mvnw</code> in the command line (<code>./mvnw</code> on unix based systems). 
 <br>
-Alternatively, you may opt to compile by double-cliking the <code>mvnw.cmd</code>.
+Alternatively, you may opt to compile by double-clicking the <code>mvnw.cmd</code>.
 <br>
 <br>
 The build goals are by default set to <code>clean package</code>. 
