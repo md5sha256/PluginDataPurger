@@ -24,6 +24,7 @@ package com.gmail.andrewandy.datapurger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,6 +48,14 @@ public class Common {
 
     public static void tell(CommandSender target, String... messages) {
         target.sendMessage(colorise(messages));
+    }
+
+    public static long toTicks(long duration, TimeUnit unit) {
+        return unit.toMillis(duration) / 50;
+    }
+
+    public static long fromTicks(long ticks, TimeUnit to) {
+        return TimeUnit.MILLISECONDS.convert(ticks * 50, to);
     }
 
     public static String capitalise(final String string) {

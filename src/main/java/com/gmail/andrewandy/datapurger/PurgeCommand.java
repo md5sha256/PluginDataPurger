@@ -25,15 +25,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PurgeCommand implements TabExecutor {
 
-    private final List<String> subCommands = Arrays.asList("reload", "purge", "cancel");
+    private final List<String> subCommands = Arrays.asList("reload", "purge", "cancel", "status");
     private final String noPermsMessage;
 
     public PurgeCommand() {
@@ -87,9 +84,17 @@ public class PurgeCommand implements TabExecutor {
                 Purger.INSTANCE.cancel();
                 Common.tell(sender, "&bPurge task cancelled.");
                 return true;
+            case "status":
+                Common.tell(sender, Purger.INSTANCE.isRunning() ?
+                    "&bThere is a purge task running." :
+                    "&aNo purge tasks detected.");
+                return true;
             default:
-                Common
-                    .tell(sender, "&bInvalid Sub Command, available sub-commands: purger | reload");
+                final String base = "&bInvalid Sub Command, available sub-commands: ";
+                final StringJoiner joiner = new StringJoiner(" | ");
+                subCommands.stream().sorted(Comparator.naturalOrder())
+                    .filter(cmd -> sender.hasPermission("datapurger." + cmd)).forEach(joiner::add);
+                Common.tell(sender, base + joiner);
                 return false;
         }
         return true;
@@ -99,7 +104,7 @@ public class PurgeCommand implements TabExecutor {
         final String alias, final String[] args) {
         if (args.length == 1) {
             return subCommands.stream()
-                .filter(string -> args[0].startsWith(string) || args[0].equalsIgnoreCase(string))
+                .filter(string -> string.startsWith(args[0]) || string.equalsIgnoreCase(args[0]))
                 .sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         }
         return Collections.emptyList();

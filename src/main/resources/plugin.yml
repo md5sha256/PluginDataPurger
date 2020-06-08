@@ -27,3 +27,6 @@ permissions:
       reload:
         description: "permissions to reload the DataPurger's configuration files"
         default: op
+      status:
+        description: "permission to show the current status of purge tasks"
+        default: op

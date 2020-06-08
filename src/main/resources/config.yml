@@ -4,15 +4,17 @@
 # /datapurger cancel
 # /datapurger purge
 # /datapurger reload
-
+# /datapurger status
+#
 # Permissions:
 # datapurger.cancel (cancel a running purge)
 # datapurger.info (display info)
 # datapurger.purge (purge command)
 # datapurger.reload (reload command)
+# datapurger.status (show status of the current purge task)
 
 # Message to send players with no permission. (Standard is default Minecraft unknown command)
-# To use color codes, use § and not &. (Example: "§eMessage" instead of "&eMessage")
+# To use color codes, use the ampersand (&)
 noPermMsg: '&fUnknown command. Type "/help" for help'
 
 # When should the plugin effect files

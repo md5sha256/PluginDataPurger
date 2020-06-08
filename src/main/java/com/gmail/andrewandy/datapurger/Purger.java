@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
@@ -65,7 +66,7 @@ public enum Purger {
     }
 
     public BukkitTask executePurge() {
-        final long delay = config.getLong("delay", 0) * 1000 / 5;
+        final long delay = Common.toTicks(config.getLong("delay", 0), TimeUnit.SECONDS);
         return executePurge(delay, true);
     }
 
