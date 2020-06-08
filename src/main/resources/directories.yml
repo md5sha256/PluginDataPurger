@@ -1,0 +1,19 @@
+#Configure Directories.
+#Purging will be done in ascending numerical order.
+#Thus, each entry should start with a number > 0.
+#Directories should be provided with a relative path
+#From the server's "world container", or the parent of the "plugins" folder.
+1:
+  path: plugins/Essentials/userdata
+  extensions: [".yml"] #If exclusions is left empty, ALL files (and directories) will be deleted.
+  excluded_names: [] #Specifiy names, please do NOT include the file extension.
+  #Max days before files should be deleted. If this section is left unset, the global value in the config wil be used.
+  max_days_since: 30
+2:
+  path: plugins/Diseases/players
+  extensions: [".yml"]
+  excluded_names: []
+3:
+  path: plugins/PerWorldInventory/data
+  extensions: []
+  excluded_names: []

@@ -1,0 +1,29 @@
+name: DataPurger
+version: ${project.version}
+main: com.gmail.andrewandy.datapurger.DataPurger
+prefix: ""
+load: STARTUP
+authors: [andrewandy]
+description: Clear Old Data Files!
+api-version: 1.13
+commands:
+  datapurger:
+    permission: "datapurger.info"
+    aliases: [purger, dp]
+permissions:
+  datapurger:
+    description: "base permission"
+    default: op
+    children:
+      cancel:
+        description: "permission to cancel a purge task"
+        default: op
+      info:
+        description: "permission for the info command"
+        default: op
+      purge:
+        description: "permission to initiate a purge"
+        default: op
+      reload:
+        description: "permissions to reload the DataPurger's configuration files"
+        default: op

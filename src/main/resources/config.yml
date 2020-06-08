@@ -1,0 +1,35 @@
+# Commands
+# Aliases: /purge, /dp
+# /datapurger
+# /datapurger cancel
+# /datapurger purge
+# /datapurger reload
+
+# Permissions:
+# datapurger.cancel (cancel a running purge)
+# datapurger.info (display info)
+# datapurger.purge (purge command)
+# datapurger.reload (reload command)
+
+# Message to send players with no permission. (Standard is default Minecraft unknown command)
+# To use color codes, use § and not &. (Example: "§eMessage" instead of "&eMessage")
+noPermMsg: '&fUnknown command. Type "/help" for help'
+
+# When should the plugin effect files
+# start: When the server starts
+# command: When admins run a command to manually do it (The command will always work, no matter the selection below)
+# stop: When the server shuts down.
+when: 'command'
+
+# If you have set "when" to start, you can specify how many seconds delay from when
+# the plugin is enabled, to it starts purging the files here
+delay: 0
+
+# Number of days that must have been passed since the file last was modified
+# To disable, set to -1
+lastModified: 30
+
+# What should happen to the affected files
+# move: The folders are moved to "EssUserDataCleaner/backup/" (Default)
+# delete: The files are permanently deleted, and can't be recovered (DANGEROUS)
+todo: 'move'
