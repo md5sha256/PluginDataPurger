@@ -46,15 +46,15 @@ public class Common {
         return strings;
     }
 
-    public static void tell(CommandSender target, String... messages) {
+    public static void tell(final CommandSender target, final String... messages) {
         target.sendMessage(colorise(messages));
     }
 
-    public static long toTicks(long duration, TimeUnit unit) {
+    public static long toTicks(final long duration, final TimeUnit unit) {
         return unit.toMillis(duration) / 50;
     }
 
-    public static long fromTicks(long ticks, TimeUnit to) {
+    public static long fromTicks(final long ticks, final TimeUnit to) {
         return TimeUnit.MILLISECONDS.convert(ticks * 50, to);
     }
 
@@ -65,9 +65,9 @@ public class Common {
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
-    public static void log(Level level, String... messages) {
+    public static void log(final Level level, final String... messages) {
         final Logger logger = DataPurger.getPlugin(DataPurger.class).getLogger();
-        for (String s : messages) {
+        for (final String s : messages) {
             logger.log(level, colorise(logPrefix + " " + s));
         }
     }
