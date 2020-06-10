@@ -47,12 +47,12 @@ public enum Purger {
     public static final String BACKUP_FOLDER = "PURGER_BACKUP";
 
     public static final DataPurger purger = DataPurger.getPlugin(DataPurger.class);
-    private boolean shouldBackup;
+    private boolean shouldMove;
     private BukkitTask previous;
 
     public void loadSettings() {
-        final String action = config.getString("todo", "backup");
-        shouldBackup = action.equalsIgnoreCase("backup");
+        final String action = config.getString("todo", "move");
+        shouldMove = !action.equalsIgnoreCase("delete");
     }
 
     public void cancel() {
@@ -158,7 +158,7 @@ public enum Purger {
                         + "%");
             }
             shouldDelete++;
-            if (shouldBackup) {
+            if (shouldMove) {
                 try {
                     final Path moved = new File(backupFolder, file.getName()).toPath();
                     Files.copy(file.toPath(), moved,
@@ -176,7 +176,7 @@ public enum Purger {
         }
         final int successPercentage = (int) Math.round(deleted / (double) shouldDelete * 100);
         Common.log(Level.INFO,
-            "&aPurge Complete! Deleted " + deleted + "/" + shouldDelete + " Files! ~ ("
+            "&aPurge Complete! Deleted/Moved " + deleted + "/" + shouldDelete + " Files! ~ ("
                 + successPercentage + "%)");
     }
 
