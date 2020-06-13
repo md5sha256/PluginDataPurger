@@ -27,9 +27,8 @@
 
     <groupId>com.gmail.andrewandy</groupId>
     <artifactId>DataPurger</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>DataPurger</name>
 
     <description>Clear Old Data Files!</description>

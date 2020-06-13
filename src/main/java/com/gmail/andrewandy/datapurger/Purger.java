@@ -203,7 +203,7 @@ public enum Purger {
             return false;
         }
         final long daysSince =
-            (Instant.now().getEpochSecond() * 1000 - file.lastModified()) / 24 / 60 / 1000;
+            (Instant.now().getEpochSecond() * 1000 - file.lastModified()) / TimeUnit.DAYS.toMillis(config.getLong("lastModified"));
         return (daysSince > daysLastModifiedThreshold);
     }
 
